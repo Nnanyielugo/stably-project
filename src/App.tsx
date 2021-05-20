@@ -10,6 +10,8 @@ import Button from './components/Button';
 import InputContainer from './components/InputContainer';
 import ResultContainer from './components/ResultContainer';
 
+import findHighestPrime from './utils/algorithm';
+
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -28,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
 function App(): JSX.Element {
   const [input, changeInput] = React.useState('');
   const [showResult, setShowResult] = React.useState(false);
+  const [result, setResult] = React.useState(0);
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     changeInput(event.target.value);
@@ -35,6 +38,8 @@ function App(): JSX.Element {
 
   const handleSubmit = (): void => {
     console.log(input);
+    const prime = findHighestPrime(+input);
+    setResult(prime);
     setShowResult(true);
   };
 
@@ -63,7 +68,9 @@ function App(): JSX.Element {
               Reset
             </Button>
           </InputContainer>
-          {!!showResult && <ResultContainer>40</ResultContainer>}
+          {!!showResult && result && (
+            <ResultContainer>{result}</ResultContainer>
+          )}
         </Card>
       </Container>
     </>
