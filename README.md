@@ -22,5 +22,8 @@ Performance benefits:
 ### Optimization 4: Inncrement inner loop from by index, instead of 1
 - also prevents looping through prime numbers, as they will not be flipped anyway.
 
+### Optimization 5: Run Algorithm as a worker
+This means large numbers that would take a noticeable time to process, would not 'freeze' the application.
+
 
 *This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).*
