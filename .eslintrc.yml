@@ -1,11 +1,15 @@
 env:
   browser: true
   es2021: true
+  node: true
+globals: { JSX: true }
 extends:
-  - 'plugin:react/recommended'
-  - standard
+  - 'plugin:@typescript-eslint/recommended'
+  - 'eslint:recommended'
 parser: '@typescript-eslint/parser'
 parserOptions:
+  project:
+    - './tsconfig.json'
   ecmaFeatures:
     jsx: true
   ecmaVersion: 12
@@ -17,7 +21,6 @@ rules:
   {
     '@typescript-eslint/no-use-before-define': 'error',
     '@typescript-eslint/no-inferrable-types': 'error',
-    '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/prefer-enum-initializers': 'warn',
     '@typescript-eslint/no-unnecessary-type-arguments': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
@@ -25,4 +28,6 @@ rules:
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-unsafe-assignment': 'warn',
     '@typescript-eslint/no-var-requires': 'warn',
+    '@typescript-eslint/semi': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'warn',
   }
