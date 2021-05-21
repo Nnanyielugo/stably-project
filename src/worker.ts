@@ -1,5 +1,5 @@
 // see optimization details in readME
-export default function findHighestPrime(n: number): number {
+export function findHighestPrime(n: number): number {
   // optimization 1:
   const primes: Int8Array = new Int8Array(n);
   let highestPrime = 0;
@@ -11,7 +11,7 @@ export default function findHighestPrime(n: number): number {
     // optimization 2
     if (primes[i] === 0) {
       // optimization 3
-      let multiplesOfI = i * i;
+      const multiplesOfI = i * i;
       // optimization 4
       for (let j = multiplesOfI; j <= n; j += i) {
         primes[j] = 1;
