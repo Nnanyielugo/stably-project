@@ -1,23 +1,26 @@
+// see optimization details in readME
 export default function findHighestPrime(n: number): number {
-  const primes: boolean[] = [];
+  // optimization 1:
+  const primes: Int8Array = new Int8Array(n);
   let highestPrime = 0;
 
-  for (let i = 0; i <= n; i++) {
-    primes[i] = true;
-  }
-
-  primes[0] = false;
-  primes[1] = false;
+  primes[0] = 1;
+  primes[1] = 1;
 
   for (let i = 2; i <= Math.sqrt(n); i++) {
-    for (let j = 2; i * j <= n; j++) {
-      const multipleOfI = i * j;
-      primes[multipleOfI] = false;
+    // optimization 2
+    if (primes[i] === 0) {
+      // optimization 3
+      let multiplesOfI = i * i;
+      // optimization 4
+      for (let j = multiplesOfI; j <= n; j += i) {
+        primes[j] = 1;
+      }
     }
   }
 
-  for (let i = 0; i <= primes.length; i++) {
-    if (primes[i]) {
+  for (let i = 2; i <= primes.length; i++) {
+    if (primes[i] === 0) {
       if (i > highestPrime) {
         highestPrime = i;
       }
