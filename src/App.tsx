@@ -1,16 +1,17 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
-import Container from './components/AppContainer';
-import Card from './components/Card';
-import Header from './components/Header';
-import SubHeader from './components/SubHeader';
-import Input from './components/Input';
-import Button from './components/Button';
-import InputContainer from './components/InputContainer';
-import ResultContainer from './components/ResultContainer';
+import worker from 'workerize-loader!./worker';
 
-import findHighestPrime from './utils/algorithm';
+import Container from './components/app/AppContainer';
+import Card from './components/app/Card';
+import Header from './components/app/Header';
+import SubHeader from './components/app/SubHeader';
+import Input from './components/app/Input';
+import Button from './components/app/Button';
+import InputContainer from './components/app/InputContainer';
+import ResultContainer from './components/app/ResultContainer';
+import Loader from './components/loader';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -31,20 +32,26 @@ function App(): JSX.Element {
   const [input, changeInput] = React.useState('');
   const [showResult, setShowResult] = React.useState(false);
   const [result, setResult] = React.useState(0);
+  const [loading, setIsLoading] = React.useState(false);
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     changeInput(event.target.value);
   };
 
-  const handleSubmit = (): void => {
-    console.log(input);
-    const prime = findHighestPrime(+input);
-    setResult(prime);
-    setShowResult(true);
-  };
-
   const handleReset = (): void => {
     setShowResult(false);
+    setResult(0);
+  };
+
+  const handleSubmit = async (): Promise<void> => {
+    setIsLoading(true);
+    handleReset();
+    // optimization 5
+    const instance = new worker();
+    const result: number = await instance.findHighestPrime(+input);
+    setResult(result);
+    setShowResult(true);
+    setIsLoading(false);
   };
 
   return (
@@ -68,9 +75,12 @@ function App(): JSX.Element {
               Reset
             </Button>
           </InputContainer>
-          {!!showResult && result && (
+
+          {!!showResult && !!result && (
             <ResultContainer>{result}</ResultContainer>
           )}
+
+          {loading && <Loader />}
         </Card>
       </Container>
     </>
