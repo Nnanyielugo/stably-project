@@ -19,7 +19,7 @@ This is important because we're only interested in numbers that are factors of i
 Performance benefits:
 - prevents looping through prime numbers, as they will not be flipped anyway.
 
-### Optimization 4: Inncrement inner loop from by index, instead of 1
+### Optimization 4: Increment inner loop from by index, instead of 1
 - also prevents looping through prime numbers, as they will not be flipped anyway.
 
 ### Optimization 5: Run Algorithm as a worker
