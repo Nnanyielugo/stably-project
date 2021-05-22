@@ -1,8 +1,8 @@
 // see optimization details in readME
-export function findHighestPrime(n: number): number {
+export function simpleSeive(n: number): number[] {
   // optimization 1:
   const primes: Int8Array = new Int8Array(n);
-  let highestPrime = 0;
+  const results = [];
 
   primes[0] = 1;
   primes[1] = 1;
@@ -21,11 +21,9 @@ export function findHighestPrime(n: number): number {
 
   for (let i = 2; i <= primes.length; i++) {
     if (primes[i] === 0) {
-      if (i > highestPrime) {
-        highestPrime = i;
-      }
+      results.push(i);
     }
   }
 
-  return highestPrime;
+  return results;
 }
