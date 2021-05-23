@@ -5,6 +5,7 @@ const Container = styled.div`
   position: relative;
   width: 40px;
   height: 40px;
+  margin-top: 20px;
 `;
 
 export default Container;
