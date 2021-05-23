@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/static/js/main.576a0d1e.chunk.js",
-    "main.js.map": "/static/js/main.576a0d1e.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.eb34296f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.eb34296f.js.map",
-    "static/js/2.56b4a735.chunk.js": "/static/js/2.56b4a735.chunk.js",
-    "static/js/2.56b4a735.chunk.js.map": "/static/js/2.56b4a735.chunk.js.map",
-    "static/js/3.b61e5616.chunk.js": "/static/js/3.b61e5616.chunk.js",
-    "static/js/3.b61e5616.chunk.js.map": "/static/js/3.b61e5616.chunk.js.map",
-    "eb860dc6b956a8828960.worker.js": "/eb860dc6b956a8828960.worker.js",
-    "eb860dc6b956a8828960.worker.js.map": "/eb860dc6b956a8828960.worker.js.map",
-    "index.html": "/index.html",
-    "static/css/main.6dea0f05.chunk.css.map": "/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.56b4a735.chunk.js.LICENSE.txt": "/static/js/2.56b4a735.chunk.js.LICENSE.txt"
+    "main.css": "/stably-project/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/stably-project/static/js/main.7da14660.chunk.js",
+    "main.js.map": "/stably-project/static/js/main.7da14660.chunk.js.map",
+    "runtime-main.js": "/stably-project/static/js/runtime-main.bdce595a.js",
+    "runtime-main.js.map": "/stably-project/static/js/runtime-main.bdce595a.js.map",
+    "static/js/2.efc2f4da.chunk.js": "/stably-project/static/js/2.efc2f4da.chunk.js",
+    "static/js/2.efc2f4da.chunk.js.map": "/stably-project/static/js/2.efc2f4da.chunk.js.map",
+    "static/js/3.b61e5616.chunk.js": "/stably-project/static/js/3.b61e5616.chunk.js",
+    "static/js/3.b61e5616.chunk.js.map": "/stably-project/static/js/3.b61e5616.chunk.js.map",
+    "4873a855258b62d063c4.worker.js": "/stably-project/4873a855258b62d063c4.worker.js",
+    "4873a855258b62d063c4.worker.js.map": "/stably-project/4873a855258b62d063c4.worker.js.map",
+    "index.html": "/stably-project/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/stably-project/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.efc2f4da.chunk.js.LICENSE.txt": "/stably-project/static/js/2.efc2f4da.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.eb34296f.js",
-    "static/js/2.56b4a735.chunk.js",
+    "static/js/runtime-main.bdce595a.js",
+    "static/js/2.efc2f4da.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.576a0d1e.chunk.js"
+    "static/js/main.7da14660.chunk.js"
   ]
 }
