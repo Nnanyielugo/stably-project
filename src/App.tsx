@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     height: 100vh;
     background-color: #282c34;
+    overflow: hidden;
     > div {
       height: 100%;
     }
@@ -65,7 +66,7 @@ function App(): JSX.Element {
             This Algorithm computes the highest prime number lower than a given
             number.
           </SubHeader>
-          <SubHeader size={15}>
+          <SubHeader size={15} marginTop={25}>
             To Continue, enter a number in the input box below.
           </SubHeader>
           <InputContainer>

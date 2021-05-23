@@ -7,7 +7,10 @@ const Card = styled.div`
   padding: 15px;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export default Card;

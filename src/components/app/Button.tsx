@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   color: #000;
-  margin: 10px auto;
+  margin: 20px 0;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
+  width: 45%;
   &:hover {
     background-color: ${(props) => props.color || '#e3e3e3'};
   }
@@ -16,10 +17,22 @@ const Button = styled.button`
   }
   :first-of-type {
     margin-right: 2px;
-    margin-left: 4px;
+    margin-left: 4%;
   }
   :last-of-type {
     margin-left: 2px;
+  }
+
+  @media (max-width: 600px) {
+    margin: 20px 0;
+    width: 45%;
+    :first-of-type {
+      margin-right: 2px;
+      margin-left: 4%;
+    }
+    :last-of-type {
+      margin-left: 2px;
+    }
   }
 `;
 
