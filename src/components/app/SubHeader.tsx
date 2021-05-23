@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 
-const SubHeader = styled.span`
+interface SubHeaderProps {
+  size: number;
+  marginBottom: number;
+}
+
+const SubHeader = styled.span.attrs((props: SubHeaderProps) => ({
+  size: props.size,
+  marginBottom: props.marginBottom,
+}))`
   color: #fff;
-  font-size: 18px;
+  font-size: ${(props) => props.size}px;
   text-align: center;
   display: block;
-  margin-bottom: 30px;
+  margin-bottom: ${(props) => props.marginBottom || 30}px; ;
 `;
 
 export default SubHeader;

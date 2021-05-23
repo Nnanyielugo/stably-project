@@ -41,11 +41,12 @@ function App(): JSX.Element {
   const handleReset = (): void => {
     setShowResult(false);
     setResult(0);
+    changeInput('');
   };
 
   const handleSubmit = async (): Promise<void> => {
+    setShowResult(false);
     setIsLoading(true);
-    handleReset();
     // optimization 5
     const instance = new worker();
     const result: number = await instance.findHighestPrime(+input);
@@ -60,7 +61,11 @@ function App(): JSX.Element {
       <Container>
         <Card>
           <Header>Welcome to the Stably Project.</Header>
-          <SubHeader>
+          <SubHeader size={18} marginBottom={10}>
+            This Algorithm computes the highest prime number lower than a given
+            number.
+          </SubHeader>
+          <SubHeader size={15}>
             To Continue, enter a number in the input box below.
           </SubHeader>
           <InputContainer>
