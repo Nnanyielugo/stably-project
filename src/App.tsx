@@ -70,10 +70,14 @@ function App(): JSX.Element {
               onChange={handleInput}
               placeholder="Enter a number"
             />
-            <Button onClick={handleSubmit}>Submit</Button>
-            <Button color="#e5cfcf" onClick={handleReset}>
-              Reset
-            </Button>
+            {!loading && (
+              <>
+                <Button onClick={handleSubmit}>Submit</Button>
+                <Button color="#e5cfcf" onClick={handleReset}>
+                  Reset
+                </Button>
+              </>
+            )}
           </InputContainer>
 
           {!!showResult && !!result && (
