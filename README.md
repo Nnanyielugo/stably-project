@@ -8,6 +8,8 @@ This problem was solved using the segmented Sieve of Eratosthenes because the So
 
 The optimizations made are described in detail below.
 
+The algorithm source file is located at [`worker.ts`](https://github.com/Nnanyielugo/stably-project/blob/main/src/worker.ts)
+
 ### Instructions for use:
 - clone or download repository
 - `cd` into the project directory and install project dependencies `npm install`
