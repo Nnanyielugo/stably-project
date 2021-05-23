@@ -44,9 +44,9 @@ export function findHighestPrime(n: number): number {
   let upperLimit = range * 2;
 
   while (lowerLimit < n) {
-    // keep upperLimit from bbbeing higher than n
+    // keep upperLimit one number lower than n
     if (upperLimit >= n) {
-      upperLimit = n;
+      upperLimit = n - 1;
     }
 
     const currentNumbers = new Int8Array(range);
