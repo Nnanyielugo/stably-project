@@ -1,9 +1,31 @@
 
-### This problem was solved using an optimised Sieve of Eratosthenes algorithm
+## Code for the Stably Short Project
+#### This is a web application that takes in a number and returns to the user the highest prime number lower than the input number.
+
+You can view the application [here](https://nnanyielugo.github.io/stably-project/)
+
+This problem was solved using the segmented Sieve of Eratosthenes because the SoE algorithm is very performant in dealing with large numbers because of its optimization which iteirates over the multiples of each prime starting from the square of the prime. However, the regular sieve uses up a lot of memory for large nnumbers (despite the optimizzationfrom using a Typed Array for storing the initial numbers, running out of space at numbers over `2e9` which is the limit typed arrays can be initialized with. Previously stopped at `1e8` when using either a `for` loop or `new Array(num).fill(bool)` so the algoritm was switched to using a segmented sieve which solves the space complexity problem. Currently, this algorithm finds the highest prime number lower than the input number for in input of `1e11` at ~20 minutes. I tried to run `1e12`, but it was taking too long so I aborted the program.
+
+The optimizations made are described in detail below.
+
+### Instructions for use:
+- clone or download repository
+- `cd` into the project directory and install project dependencies `npm install`
+- start the development server `npm start`
+- view on `http://localhost:3000
+
+#### Testing
+Run `npm test`
+
+#### Deployment
+- create an empty repository on github
+- replace the github url on the homepage key in `package.json` with your `username dot github dot io`.
+- run `npm run deploy`
+- navigate to the replaced url on your `package.json` and view the application there.
 
 ### Optimizations:
 #### Optimization 1: Initialize `primes` as an Int8 typed array.
-Because Int8 arrays are initialized and filled upp to the number `n` passed in, we're using zero to mark as true instead, and flip to 1, to mark as false.
+Because Int8 arrays are initialized and filled up to the number `n` passed in, we're using zero to mark as true instead, and flip to 1, to mark as false.
 
 Performance benefits:
 - increase input max number from 1e8 (100 million) to 2e9(2 billion).
