@@ -19,11 +19,25 @@ This is important because we're only interested in numbers that are factors of i
 Performance benefits:
 - prevents looping through prime numbers, as they will not be flipped anyway.
 
-### Optimization 4: Inncrement inner loop from by index, instead of 1
+### Optimization 4: Increment inner loop from by index, instead of 1
 - also prevents looping through prime numbers, as they will not be flipped anyway.
 
 ### Optimization 5: Run Algorithm as a worker
 This means large numbers that would take a noticeable time to process, would not 'freeze' the application.
 
+### Optimization 6: Use segmented seive
+While SoE performs pretty well on the time complexity scale, the compiler/interpreter runs out of space at around 1e8 (2e9 when optimised with typed arrays due to typed arrays unable to be initialized with > 2 billion items) and returns an error. To handle this, we seive for primes in segments.
+
+#### steps:
+- convert original SoE algorithm to return an array of primes instead of a single number
+- init a `highestPrime` variable
+- compute primes up to the square root of the input `n` using a simple sieve
+- divide range `n` into different segments with seqment size equal to the square root of `n`
+- process each segment at a time.
+- initialize array to mark primes in current range
+- loop through primes generated from simple seive
+- find minimim multiple of prime in range where `range = low - high`
+- mark multiples of prime in range
+- loop through currentNumbers array and update `highestPrime` variable bases on set condition being met
 
 *This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).*
