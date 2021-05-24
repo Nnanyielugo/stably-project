@@ -10,13 +10,19 @@ test('that algorithm returns highest prime numbber before an odd number', (): vo
   expect(result).toEqual(53);
 });
 
-test('that algorithm works for very large numbers (>= 1 billion) ', (): void => {
-  const result = findHighestPrime(1e9);
-  expect(result).toEqual(999999937); // takes <= 23 seconds
+test('that algorithm works for very large numbers (>= 9 quadrillion) ', (): void => {
+  const result = findHighestPrime(9e15);
+  expect(result).toEqual(8999999999999971);
 });
 
 test('that algorithm returns an error for numbers less than 2', (): void => {
   expect(() => findHighestPrime(0)).toThrowError(
     'Input number must be greater than 2'
+  );
+});
+
+test('that algorithm returns an error for numbbers 10 quadrillion and above', () => {
+  expect(() => findHighestPrime(1e16)).toThrowError(
+    'Input number should not exceed 10 quadrillion!'
   );
 });
