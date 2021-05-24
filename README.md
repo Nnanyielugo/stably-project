@@ -4,11 +4,13 @@
 
 You can view the application [here](https://nnanyielugo.github.io/stably-project/)
 
-This problem was solved using the segmented Sieve of Eratosthenes because the SoE algorithm is very performant in dealing with large numbers because of its optimization which iterates over the multiples of each prime number, starting from the square of the prime. However, the regular sieve uses up a lot of memory for large numbers (despite the optimizationfrom using a Typed Array for storing the initial numbers, running out of space at numbers over `2e9` which is the limit typed arrays can be initialized with. Previously stopped at `1e8` when using either a `for` loop or `new Array(num).fill(bool)` so the algoritm was switched to using a segmented sieve which solves the space complexity problem. Currently, this algorithm finds the highest prime number lower than the input number for in input of `1e11` at ~20 minutes. I tried to run `1e12`, but it was taking too long so I aborted the program.
+This solution started by using the Sieve of Eratosthenes, moved to the segmented SoE to solve the space complexity problem regular SoE throws up, then changed to using a regular `i, j` loop technique, starting from the input number `n`, looping down, and making a few optimizations to perform much faster than SoE and SSoE for very large numbers.
 
-The optimizations made are described in detail below.
+The code for SOE and SSOE are commented out instead of deleted in [`worker.ts`](https://github.com/Nnanyielugo/stably-project/blob/main/src/worker.ts), for reference sake.
 
-The algorithm source file is located at [`worker.ts`](https://github.com/Nnanyielugo/stably-project/blob/main/src/worker.ts)
+Algorithms used at different points and the optimizations made are described in detail below.
+
+#### *The algorithm source file is located at [`worker.ts`](https://github.com/Nnanyielugo/stably-project/blob/main/src/worker.ts)*
 
 ### Instructions for use:
 - clone or download repository
@@ -26,7 +28,7 @@ Run `npm test`
 - navigate to the replaced url on your `package.json` and view the application there.
 
 ### Optimizations:
-#### Optimization 1: Initialize `primes` as an Int8 typed array.
+#### Optimization 1: Initialize `primes` as an Int8 typed array using the Sieve of Eratosthenes algorithm.
 Because Int8 arrays are initialized and filled up to the number `n` passed in, we're using zero to mark as true instead, and flip to 1, to mark as false.
 
 Performance benefits:
@@ -63,5 +65,11 @@ While SoE performs pretty well on the time complexity scale, the compiler/interp
 - find minimim multiple of prime in range where `range = low - high`
 - mark multiples of prime in range
 - loop through currentNumbers array and update `highestPrime` variable bases on set condition being met
+
+### Optimization 7: Use regular `i, j` loops and make some optimizations
+I wondered how a reguler double loop would solve this problem, except that the outer loop would start from `n` and loop down, while checking for primes in the inner loop. Using estimated measurements, it performed slightly better than the segmented seive for very large numbers `1e9`. Then I used a technique similar to the SoE outer loop for the inner loop of this function, where the loop runs until `i` is greater than or equal to the square root of `x`. The speed improvement was atronomical, with inputs up to `9e15` resolving in a few seconds where previously `1e11` took approx 20 minutes to run.
+
+*Limitations:* This program works well for numbers up to 9 quadrillion, but fails for numbers above that (enters an infinite loop) because numerical operations on numbers 10 quadrillion and above are pretty inconsistent.
+
 
 *This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).*
