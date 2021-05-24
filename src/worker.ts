@@ -30,6 +30,9 @@ function simpleSieve(n: number): number[] {
 
 // optimization 6
 export function findHighestPrime(n: number): number {
+  if (n < 2) {
+    throw new Error('Input number must be greater than 2');
+  }
   const primes = [];
   let highestPrime = 0;
 

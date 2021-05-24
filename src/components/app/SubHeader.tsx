@@ -4,14 +4,16 @@ interface SubHeaderProps {
   size: number;
   marginBottom: number;
   marginTop: number;
+  color: string;
 }
 
 const SubHeader = styled.span.attrs((props: SubHeaderProps) => ({
   size: props.size,
   marginBottom: props.marginBottom,
   marginTop: props.marginTop,
+  color: props.color,
 }))`
-  color: #fff;
+  color: ${(props) => props.color || '#fff'};
   font-size: ${(props) => props.size}px;
   text-align: center;
   display: block;

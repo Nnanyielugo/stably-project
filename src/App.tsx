@@ -34,6 +34,7 @@ function App(): JSX.Element {
   const [showResult, setShowResult] = React.useState(false);
   const [result, setResult] = React.useState(0);
   const [loading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState('');
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     changeInput(event.target.value);
@@ -43,17 +44,24 @@ function App(): JSX.Element {
     setShowResult(false);
     setResult(0);
     changeInput('');
+    setError('');
   };
 
   const handleSubmit = async (): Promise<void> => {
-    setShowResult(false);
-    setIsLoading(true);
-    // optimization 5
-    const instance = new worker();
-    const result: number = await instance.findHighestPrime(+input);
-    setResult(result);
-    setShowResult(true);
-    setIsLoading(false);
+    try {
+      setShowResult(false);
+      setIsLoading(true);
+      // optimization 5
+      const instance = new worker();
+      const result: number = await instance.findHighestPrime(+input);
+      setResult(result);
+      setShowResult(true);
+      setIsLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setIsLoading(false);
+      setShowResult(false);
+    }
   };
 
   return (
@@ -88,6 +96,12 @@ function App(): JSX.Element {
 
           {!!showResult && !!result && (
             <ResultContainer>{result}</ResultContainer>
+          )}
+
+          {!!error && (
+            <SubHeader color="red" size={15} marginTop={15}>
+              {error}
+            </SubHeader>
           )}
 
           {loading && <Loader />}
