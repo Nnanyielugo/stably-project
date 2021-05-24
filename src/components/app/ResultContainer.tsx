@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const ResultContainer = styled.div`
   margin: 0 auto;
-  width: 37%;
+  width: 50%;
   height: 50px;
   background-color: whitesmoke;
   padding: 15px;

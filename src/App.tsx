@@ -51,6 +51,7 @@ function App(): JSX.Element {
     try {
       setShowResult(false);
       setIsLoading(true);
+      setError('');
       // optimization 5
       const instance = new worker();
       const result: number = await instance.findHighestPrime(+input);
