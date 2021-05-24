@@ -4,9 +4,11 @@
 
 You can view the application [here](https://nnanyielugo.github.io/stably-project/)
 
-This problem was solved using the segmented Sieve of Eratosthenes because the SoE algorithm is very performant in dealing with large numbers because of its optimization which iteirates over the multiples of each prime starting from the square of the prime. However, the regular sieve uses up a lot of memory for large nnumbers (despite the optimizzationfrom using a Typed Array for storing the initial numbers, running out of space at numbers over `2e9` which is the limit typed arrays can be initialized with. Previously stopped at `1e8` when using either a `for` loop or `new Array(num).fill(bool)` so the algoritm was switched to using a segmented sieve which solves the space complexity problem. Currently, this algorithm finds the highest prime number lower than the input number for in input of `1e11` at ~20 minutes. I tried to run `1e12`, but it was taking too long so I aborted the program.
+This problem was solved using the segmented Sieve of Eratosthenes because the SoE algorithm is very performant in dealing with large numbers because of its optimization which iterates over the multiples of each prime number, starting from the square of the prime. However, the regular sieve uses up a lot of memory for large numbers (despite the optimizationfrom using a Typed Array for storing the initial numbers, running out of space at numbers over `2e9` which is the limit typed arrays can be initialized with. Previously stopped at `1e8` when using either a `for` loop or `new Array(num).fill(bool)` so the algoritm was switched to using a segmented sieve which solves the space complexity problem. Currently, this algorithm finds the highest prime number lower than the input number for in input of `1e11` at ~20 minutes. I tried to run `1e12`, but it was taking too long so I aborted the program.
 
 The optimizations made are described in detail below.
+
+The algorithm source file is located at [`worker.ts`](https://github.com/Nnanyielugo/stably-project/blob/main/src/worker.ts)
 
 ### Instructions for use:
 - clone or download repository
